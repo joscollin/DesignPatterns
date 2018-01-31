@@ -45,7 +45,7 @@ class WinFactory: public GUIFactory {
   }
 };
 
-//The application never knows what factory it is dealing with
+//The Application or Client never knows what factory it is dealing with
 //and what button it is creating and drawing. This is due to
 //the abstract factory.
 class Application {
@@ -58,9 +58,10 @@ class Application {
   }
 };
 
-int main()
+//Based on the suggestions I got, moving the
+//specific factory creation from main() to a get function.
+GUIFactory* getexplicitfactory()
 {
-
   int input;
   std::cout << "Enter 1 or 2: ";
   std::cin >> input;
@@ -76,10 +77,15 @@ int main()
   }
   else
   {
-    std::cout << "wrong input";
-    return 1;
+    std::cout << "wrong input" << std::endl;
+    exit(0);
   }
-  
-  Application *application = new Application(factory);
+
+  return factory;
+}
+
+int main()
+{
+  Application *application = new Application(getexplicitfactory());
   return 0;
 }
