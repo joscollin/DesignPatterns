@@ -33,7 +33,7 @@ class CountryRecord: public MusicRecord {
 
 class MusicFactory {
  public:
-  MusicRecord* getmusicrecord(genre gen)
+  MusicRecord* getrecord(genre gen)
   {
     MusicRecord *musicrecord = nullptr;
     switch(gen)
@@ -80,7 +80,7 @@ int main()
       break;
   }
   
-  MusicRecord *musicrecord = musicfactory->getmusicrecord(gen);
+  MusicRecord *musicrecord = musicfactory->getrecord(gen);
   if(musicrecord)
   {
     musicrecord->playsong();
