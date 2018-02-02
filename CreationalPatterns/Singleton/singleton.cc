@@ -1,18 +1,21 @@
 #include <iostream>
 
 class Singleton {
+
 private:
+  static Singleton* single;
+
   Singleton()
   {
     std::cout << "creating a new instance of Singleton" << std::endl;
   }
-public:
-  static Singleton* single;
+
   ~Singleton()
   {
     std::cout << "destroyed the instance" << std::endl;
   }
 
+public:
   static Singleton* getinstance()
   {
     if(!single)
@@ -27,7 +30,7 @@ public:
     delete single;
     single = nullptr; //reset the pointer
   }
-  
+
   void print()
   {
     std::cout << "printing singleton" << std::endl;
