@@ -8,19 +8,16 @@ private:
   }
 public:
   static Singleton* single;
-  static bool instanceflag;
   ~Singleton()
   {
-    instanceflag = false;
     std::cout << "destroyed the instance" << std::endl;
   }
 
   static Singleton* getinstance()
   {
-    if(!instanceflag)
+    if(!single)
     {
       single = new Singleton();
-      instanceflag = true;
     }
     return single;
   }
@@ -28,6 +25,7 @@ public:
   static void destroyinstance()
   {
     delete single;
+    single = nullptr; //reset the pointer
   }
   
   void print()
@@ -37,7 +35,6 @@ public:
 };
 
 Singleton* Singleton::single = nullptr;
-bool Singleton::instanceflag = false;
 
 int main()
 {
