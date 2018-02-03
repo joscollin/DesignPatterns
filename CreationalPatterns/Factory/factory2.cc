@@ -6,7 +6,9 @@ enum genre {ROCK, POP, COUNTRY, INVALID};
 class MusicRecord {
  public:
   virtual void playsong() = 0;
-  static MusicRecord* getrecord(genre gen);
+
+  //factory method
+  static MusicRecord* getrecord(genre);
 };
 
 class RockRecord: public MusicRecord {
